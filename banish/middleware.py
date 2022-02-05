@@ -26,7 +26,7 @@ from banish.models import Banishment, Whitelist
 cache = caches[getattr(settings, 'DJANGO_BANISH_CACHE', 'default')]
 
 
-class BanishMiddleware(object):
+class BanishMiddleware:
     def __init__(self):
         """
         Middleware init is called once per server on startup - do the heavy
