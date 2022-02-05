@@ -27,13 +27,14 @@ cache = caches[getattr(settings, 'DJANGO_BANISH_CACHE', 'default')]
 
 
 class BanishMiddleware:
-    def __init__(self):
+    def __init__(self, get_response):
         """
         Middleware init is called once per server on startup - do the heavy
         lifting here.
         """
         # If disabled or not enabled raise MiddleWareNotUsed so django
         # processes next middleware.
+        self.get_response = get_response
         self.ENABLED = getattr(settings, 'BANISH_ENABLED', False)
         self.DEBUG = getattr(settings, 'BANISH_DEBUG', False)
         self.ABUSE_THRESHOLD = getattr(settings, 'BANISH_ABUSE_THRESHOLD', 75)
