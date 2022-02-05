@@ -15,7 +15,7 @@
 
 from django.contrib import admin
 
-from .models import Banishment, Whitelist
+from banish.models import Banishment, Whitelist
 
 admin.site.register(Banishment)
 admin.site.register(Whitelist)
